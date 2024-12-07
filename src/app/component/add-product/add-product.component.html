@@ -1,0 +1,65 @@
+<div class="form-wrapper">
+    <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Product Name</mat-label>
+            <input matInput id="name" formControlName="name" placeholder="Enter product name" required />
+            <mat-error *ngIf="productForm.get('name')?.hasError('required')">Name is required</mat-error>
+            <mat-error *ngIf="productForm.get('name')?.hasError('minlength')">Name must be at least 3 characters
+                long</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Description</mat-label>
+            <textarea matInput id="description" formControlName="description" placeholder="Enter product description"
+                required></textarea>
+            <mat-error *ngIf="productForm.get('description')?.hasError('required')">Description is required</mat-error>
+            <mat-error *ngIf="productForm.get('description')?.hasError('maxlength')">Description cannot exceed 500
+                characters</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Brand</mat-label>
+            <input matInput id="brand" formControlName="brand" placeholder="Enter brand" required />
+            <mat-error *ngIf="productForm.get('brand')?.hasError('required')">Brand is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Price</mat-label>
+            <input matInput id="price" type="number" formControlName="price" placeholder="Enter price" required />
+            <mat-error *ngIf="productForm.get('price')?.hasError('required')">Price is required</mat-error>
+            <mat-error *ngIf="productForm.get('price')?.hasError('min')">Price must be a positive number</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Stock Quantity</mat-label>
+            <input matInput id="stockQuantity" type="number" formControlName="stockQuantity"
+                placeholder="Enter stock quantity" required />
+            <mat-error *ngIf="productForm.get('stockQuantity')?.hasError('required')">Stock quantity is
+                required</mat-error>
+            <mat-error *ngIf="productForm.get('stockQuantity')?.hasError('min')">Stock quantity must be
+                positive</mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="releaseDate">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Category</mat-label>
+            <input matInput id="category" formControlName="category" placeholder="Enter category" />
+        </mat-form-field>
+
+
+        <!-- <mat-checkbox formControlName="productAvailable">Product Available</mat-checkbox> -->
+
+        <div class="form-actions">
+            <button mat-raised-button color="primary" type="submit" [disabled]="productForm.invalid">
+                Add Product</button>
+        </div>
+    </form>
+</div>

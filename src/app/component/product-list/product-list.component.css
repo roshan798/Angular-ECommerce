@@ -1,0 +1,33 @@
+.product-card {
+    max-width: 400px;
+}
+
+.product-card {
+    width: 100%;
+    transition: background-color 0.2s ease-in-out;
+}
+
+mat-card:hover {
+    cursor: pointer;
+    background-color: rgb(255, 170, 170);
+}
+
+
+img {
+    max-width: 380px;
+}
+
+mat-card {
+    max-width: 400px;
+    background-color: rgb(255, 190, 190);
+
+}
+
+.products-container {
+    display: flex;
+    gap: 0.6rem;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}

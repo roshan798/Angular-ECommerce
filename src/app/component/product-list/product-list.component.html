@@ -1,0 +1,51 @@
+<main class="container" style="padding: 1rem;">
+    <div [style]="{
+        display: 'flex',
+        'justify-content' :'space-between',
+
+    }">
+        <h2>Our Latest Collection</h2>
+        <button [routerLink]="['/add-product']" mat-fab color="primary" aria-label="Add Product" mat-fab extended>
+            <mat-icon>add</mat-icon>
+            Add Product
+        </button>
+    </div>
+    <div class="products-container">
+        <!-- Loop through products -->
+        <mat-card class="product-card" appearance="outlined" *ngFor="let product of products">
+            <!-- Product Image -->
+            <!-- <img mat-card-image [src]="'assets/images/' + product.imageName" [alt]="product.name"
+                style="max-height: 200px; object-fit: contain;" /> -->
+
+            <!-- Product Details -->
+            <mat-card-content>
+                <mat-card-title>
+                    {{ product.name }}
+                </mat-card-title>
+                <mat-card-subtitle>
+                    {{ product.price | currency: 'INR' }}
+                </mat-card-subtitle>
+                <p>{{ product.description }}</p>
+                <p>Brand: {{ product.brand }}</p>
+                <p>Category: {{ product.category }}</p>
+                <p>Release Date: {{ product.releaseDate }}</p>
+                <p *ngIf="product.stockQuantity > 0; else outOfStock">
+                    Stock: {{ product.stockQuantity }}
+                </p>
+                <!-- Out of Stock Template -->
+                <ng-template #outOfStock>
+                    <p style="color: red;">Out of Stock</p>
+                </ng-template>
+                <div>
+                    <button mat-raised-button>Add To Cart</button>
+
+                </div>
+            </mat-card-content>
+        </mat-card>
+
+        <!-- No Products Available Message -->
+        <div *ngIf="products.length === 0" class="no-products-message">
+            <p>No Products Available!</p>
+        </div>
+    </div>
+</main>

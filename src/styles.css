@@ -1,1 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+@import "@angular/material/prebuilt-themes/magenta-violet.css";
+
+html,
+body {
+    height: 100%;
+    background: rgb(244, 244, 244);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
