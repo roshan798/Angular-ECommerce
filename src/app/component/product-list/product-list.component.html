@@ -5,6 +5,21 @@
 
     }">
         <h2>Our Latest Collection</h2>
+        <mat-form-field>
+            <mat-label>Search Products</mat-label>
+            <input matInput appearance="outline" (keyup)="filterProducts($event)">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-select (selectionChange)="sortProducts($event.value)" placeholder="Sort Products">
+                
+                <mat-option value="priceLowHigh">
+                    Price: Low to High
+                </mat-option>
+                <mat-option value="priceHighLow">
+                    Price: High to Low
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
         <button [routerLink]="['/add-product']" mat-fab color="primary" aria-label="Add Product" mat-fab extended>
             <mat-icon>add</mat-icon>
             Add Product
@@ -12,7 +27,7 @@
     </div>
     <div class="products-container">
         <!-- Loop through products -->
-        <mat-card class="product-card" appearance="outlined" *ngFor="let product of products">
+        <mat-card class="product-card" appearance="outlined" *ngFor="let product of filteredProduct">
             <!-- Product Image -->
             <!-- <img mat-card-image [src]="'assets/images/' + product.imageName" [alt]="product.name"
                 style="max-height: 200px; object-fit: contain;" /> -->
